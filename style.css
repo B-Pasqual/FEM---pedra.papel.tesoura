@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap');
+
+:root {
+  --DarkText: hsl(229, 25%, 31%);
+  --ScoreText: hsl(229, 64%, 46%);
+  --HeaderOutline: hsl(217, 16%, 45%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+body {
+  background-image: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+  background-size: cover;
+  height: 100vh;
+  margin: 2rem 0;
+}
+
+.container {
+  max-width: 375px;
+  border: 1px solid lightblue;
+  margin: auto;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ! HEader ----------------------------------------------------- */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  border: 3px solid var(--HeaderOutline);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+/* Logo container */
+
+.logo_container img {
+  width: 120px;
+}
+
+/* Score container */
+.score_container {
+  color: black;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0rem 1.5rem;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px black;
+}
+
+.score_title {
+  color: var(--ScoreText);
+  font-size: 0.8rem;
+}
+
+.actual_score {
+  font-size: 3rem;
+  color: var(--DarkText);
+  font-weight: 700;
+  opacity: 0.9;
+}
+
+/*! Options container ---------------------------------------------------*/
+
+.options_container {
+  max-width: 375px;
+  height: 350px;
+  border: 1px solid lightcoral;
+  position: relative;
+}
+
+.cards {
+  width: 120px;
+  height: 120px;
+  background-color: white;
+  position: absolute;
+  transition: all 0.5s;
+}
+
+.cards:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.412);
+}
+
+.cards:active {
+  transform: scale(1);
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.412);
+}
+
+.paper_container {
+  border-radius: 50%;
+  top: 10%;
+  left: 5%;
+
+  border: 15px solid blue;
+  background-color: white;
+}
+
+.scissor_container {
+  border: 15px solid hsl(39, 89%, 49%);
+  border-radius: 50%;
+  top: 10%;
+  right: 5%;
+}
+
+.rock_container {
+  border: 15px solid hsl(349, 71%, 52%);
+  border-radius: 50%;
+  bottom: 5%;
+  right: 34%;
+}
+
+.bar {
+  height: 15px;
+  width: 170px;
+  background-color: hsl(237, 49%, 15%);
+  position: absolute;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+.bar1 {
+  top: 90px;
+  left: 100px;
+}
+.bar2 {
+  top: 90px;
+  left: 100px;
+  transform-origin: right;
+  transform: rotate(-60deg);
+}
+.bar3 {
+  top: 90px;
+  left: 100px;
+  transform-origin: left;
+  transform: rotate(60deg);
+}
+
+/*! Footer ------------------------------------------------------------ */
+.rules_link {
+  text-decoration: none;
+  color: white;
+  border: 1px solid whitesmoke;
+  padding: 0.5rem 2rem;
+  border-radius: 5px;
+  margin: 4rem;
+}
