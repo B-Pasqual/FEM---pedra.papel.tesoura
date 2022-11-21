@@ -3,8 +3,11 @@
 // const papel = document.querySelector('.paper_container');
 // const pedra = document.querySelector('.rock_container');
 // const tesoura = document.querySelector('.scissor_container');
-const containerPrincipal = document.querySelector('.options_container');
-const optionsContainer = document.querySelectorAll('.cards');
+const optionsContainer = document.querySelector('.options_container');
+const escolhaCards = document.querySelectorAll('.cards');
+const playerContainer = document.querySelector('.player_container');
+const houseContainer = document.querySelector('.house_container');
+const resultContainer = document.querySelector('.result_container');
 
 //!Variáveis ----------------------------------------------------------------
 
@@ -16,21 +19,25 @@ function giraDado() {
   return aleatorio;
 }
 
-function escolhas(escolhaCasa) {
-  containerPrincipal.innerHTML = `
-  <div class="cards ${escolhaCasa}_container flex">
-          <img src="./images/icon-${escolhaCasa}.svg" alt="" class="${escolhaCasa}_icon" />
-  </div>`;
+function escolhas(escolhaCasa, escolhaJogador) {
+  playerContainer.classList.add(`${escolhaJogador}_container`);
+  houseContainer.classList.add(`${escolhaCasa}_container`);
+}
+
+function trocaTela() {
+  optionsContainer.style.display = 'none';
+  resultContainer.style.display = 'flex';
 }
 
 //! Event handlers ----------------------------------------------------------
 
-optionsContainer.forEach((cards, index) => {
+escolhaCards.forEach((cards, index) => {
   cards.addEventListener('click', () => {
     escolhaJogador = possibilidades[index];
     let escolhaCasa = giraDado();
     console.log(`Casa: ${escolhaCasa}
     Jogador: ${escolhaJogador}`);
-    escolhas(escolhaCasa);
+    trocaTela();
+    escolhas(escolhaCasa, escolhaJogador);
   });
 });
