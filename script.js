@@ -5,9 +5,12 @@
 // const tesoura = document.querySelector('.scissor_container');
 const optionsContainer = document.querySelector('.options_container');
 const escolhaCards = document.querySelectorAll('.cards');
-const playerContainer = document.querySelector('.player_container');
-const houseContainer = document.querySelector('.house_container');
+let playerContainer = document.querySelector('.player_container');
+let houseContainer = document.querySelector('.house_container');
 const resultContainer = document.querySelector('.result_container');
+//Links selection
+const playAgain = document.querySelector('.jogar-novamente');
+const rulesLink = document.querySelector('.rules_link');
 
 //!Variáveis ----------------------------------------------------------------
 
@@ -20,6 +23,8 @@ function giraDado() {
 }
 
 function escolhas(escolhaCasa, escolhaJogador) {
+  let playerContainer = document.querySelector('.player_container');
+  let houseContainer = document.querySelector('.house_container');
   playerContainer.classList.add(`${escolhaJogador}_container`);
   houseContainer.classList.add(`${escolhaCasa}_container`);
 }
@@ -27,6 +32,20 @@ function escolhas(escolhaCasa, escolhaJogador) {
 function trocaTela() {
   optionsContainer.style.display = 'none';
   resultContainer.style.display = 'flex';
+}
+
+function changeLink() {
+  playAgain.style.display = 'block';
+  rulesLink.style.display = 'none';
+}
+
+function estadoInicial() {
+  optionsContainer.style.display = 'block';
+  resultContainer.style.display = 'none';
+  playAgain.style.display = 'none';
+  rulesLink.style.display = 'block';
+  resultContainer.innerHTML = `<div class="player_container"></div>
+  <div class="house_container"></div>`;
 }
 
 //! Event handlers ----------------------------------------------------------
@@ -39,5 +58,10 @@ escolhaCards.forEach((cards, index) => {
     Jogador: ${escolhaJogador}`);
     trocaTela();
     escolhas(escolhaCasa, escolhaJogador);
+    changeLink();
   });
+});
+
+playAgain.addEventListener('click', () => {
+  estadoInicial();
 });

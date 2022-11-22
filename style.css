@@ -32,6 +32,10 @@ body {
   justify-content: center;
 }
 
+.hidden {
+  display: none;
+}
+
 /* ! HEader ----------------------------------------------------- */
 
 header {
@@ -184,6 +188,16 @@ header {
 
 /*! Footer ------------------------------------------------------------ */
 .rules_link {
+  text-decoration: none;
+  color: white;
+  border: 1px solid whitesmoke;
+  padding: 0.5rem 2rem;
+  border-radius: 5px;
+  margin: 4rem;
+}
+
+.jogar-novamente {
+  display: none;
   text-decoration: none;
   color: white;
   border: 1px solid whitesmoke;
