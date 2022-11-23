@@ -49,8 +49,14 @@ function estadoInicial() {
   resultContainer.style.display = 'none';
   playAgain.style.display = 'none';
   rulesLink.style.display = 'block';
-  resultContainer.innerHTML = `<div class="player_container"></div>
-  <div class="house_container"></div>`;
+  resultContainer.innerHTML = `<div class="left-side">
+  <div class="player_container"></div>
+  <h2>Jogador</h2>
+</div>
+<div class="right-side">
+  <div class="house_container"></div>
+  <h2>Robo</h2>
+</div>`;
 }
 
 /* function checarVencendor(escolhaCasa, escolhaJogador) {
