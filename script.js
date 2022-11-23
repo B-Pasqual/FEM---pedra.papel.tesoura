@@ -17,10 +17,11 @@ const rulesLink = document.querySelector('.rules_link');
 const possibilidades = ['paper', 'rock', 'scissor'];
 
 //!Funções ------------------------------------------------------------------
-function giraDado() {
+
+/* function giraDado() {
   let aleatorio = possibilidades[Math.floor(Math.random() * (3 - 0) + 0)];
   return aleatorio;
-}
+} */
 
 function escolhas(escolhaCasa, escolhaJogador) {
   let playerContainer = document.querySelector('.player_container');
@@ -29,15 +30,19 @@ function escolhas(escolhaCasa, escolhaJogador) {
   houseContainer.classList.add(`${escolhaCasa}_container`);
 }
 
+//Função que irá ocultar a tela com as opções e irá mostrar apenas
 function trocaTela() {
   optionsContainer.style.display = 'none';
   resultContainer.style.display = 'flex';
 }
 
+//Função que esconde o link para as regras e mostra o jogar novamente
 function changeLink() {
   playAgain.style.display = 'block';
   rulesLink.style.display = 'none';
 }
+
+//Função que irá voltar a tela para um estado inicial, para que seja possível jogar novamente.
 
 function estadoInicial() {
   optionsContainer.style.display = 'block';
@@ -48,17 +53,27 @@ function estadoInicial() {
   <div class="house_container"></div>`;
 }
 
+/* function checarVencendor(escolhaCasa, escolhaJogador) {
+  escolhaCasa == escolhaJogador
+    ? console.log('empate')
+    : escolhaCasa < escolhaJogador
+    ? console.log('ai sim')
+    : '';
+} */
+
 //! Event handlers ----------------------------------------------------------
 
 escolhaCards.forEach((cards, index) => {
   cards.addEventListener('click', () => {
     escolhaJogador = possibilidades[index];
-    let escolhaCasa = giraDado();
+    let escolhaCasa = possibilidades[Math.floor(Math.random() * (3 - 0) + 0)];
     console.log(`Casa: ${escolhaCasa}
     Jogador: ${escolhaJogador}`);
     trocaTela();
     escolhas(escolhaCasa, escolhaJogador);
     changeLink();
+    console.log(typeof escolhaCasa, escolhaCasa);
+    console.log(typeof escolhaJogador, escolhaJogador);
   });
 });
 
