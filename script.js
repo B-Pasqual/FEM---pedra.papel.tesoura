@@ -31,9 +31,10 @@ function crowAdd(vencedor) {
 
   if (vencedor == 'jogador') {
     console.log('jogador');
+    coroaEsquerda.style.display = 'block';
     message.textContent = 'VOCÊ GANHOU !';
   } else if (vencedor == 'robo') {
-    console.log('robo');
+    coroaDireita.style.display = 'block';
     message.textContent = 'O ROBO GANHOU !';
   } else if (vencedor == 'empate') {
     message.textContent = 'EMPATE !';
@@ -70,7 +71,7 @@ function estadoInicial() {
   resultContainer.innerHTML = ` <div class="sides">
   <div class="left-side">
     <img
-      class="crow-left"
+      class="crow-left active"
       src="./images/crown.png"
       alt="crow icon"
     />

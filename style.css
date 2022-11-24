@@ -247,12 +247,22 @@ footer {
   transform-origin: left;
   left: 17%;
   top: -45%;
-  transform: translateY(-50px);
-  transition: all 5s;
-  opacity: 0;
+  /* transform: translateY(-50px); */
+  display: none;
+  animation: dropCrow 1s linear;
 }
 
-.crow-right.active {
+/* ! Animações ---------------------------------------- */
+@keyframes dropCrow {
+  from {
+    transform: translateY(-50px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* .crow-right.active {
   transform: translateY(0);
   opacity: 1;
 }
@@ -260,4 +270,4 @@ footer {
 .crow-left.active {
   transform: translateY(0);
   opacity: 1;
-}
+} */ ;
