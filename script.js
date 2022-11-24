@@ -1,4 +1,4 @@
-//! Selecionando Elementos necessários --------------------------------------
+//! Selecionando Elementos necessários DOM -------------------------------------
 
 const optionsContainer = document.querySelector('.options_container');
 const escolhaCards = document.querySelectorAll('.cards');
@@ -8,14 +8,15 @@ const resultContainer = document.querySelector('.result_container');
 //Links selection
 const playAgain = document.querySelector('.jogar-novamente');
 const rulesLink = document.querySelector('.rules_link');
-
-//crowSelection
-// const rightCrow = document.querySelector('.crow-right');
-// const leftCrow = document.querySelector('.crow-left');
+// Selecionando placar e reset score
+const placar = document.querySelector('.actual_score');
+const resetScore = document.querySelector('.reset_score');
+const scoreContainer = document.querySelector('.score_container');
 
 //!Variáveis ------------------------------------------------------------------
 
 const possibilidades = ['paper', 'rock', 'scissor'];
+[pontosJogador, pontosComputador] = [0, 0];
 
 //!Funções --------------------------------------------------------------------
 
@@ -26,20 +27,27 @@ function crowAdd(vencedor) {
   const coroaDireita = document.querySelector('.crow-right');
   const coroaEsquerda = document.querySelector('.crow-left');
   const message = document.querySelector('.mensagem');
+  const placar = document.querySelector('.actual_score');
+  console.log(pontosJogador, pontosComputador);
 
   //Comparando parâmetro para saber quem ganhou e alterando a mensagem de resultado
 
   if (vencedor == 'jogador') {
+    pontosJogador++;
     console.log('jogador');
+    coroaDireita.style.display = 'none';
     coroaEsquerda.style.display = 'block';
     message.textContent = 'VOCÊ GANHOU !';
   } else if (vencedor == 'robo') {
+    pontosComputador++;
+    coroaEsquerda.style.display = 'none';
     coroaDireita.style.display = 'block';
     message.textContent = 'O ROBO GANHOU !';
   } else if (vencedor == 'empate') {
     message.textContent = 'EMPATE !';
     console.log('empate');
   }
+  placar.textContent = `${pontosJogador} x ${pontosComputador}`;
 }
 
 function escolhas(escolhaCasa, escolhaJogador) {
@@ -67,7 +75,7 @@ function estadoInicial() {
   optionsContainer.style.display = 'block';
   resultContainer.style.display = 'none';
   playAgain.style.display = 'none';
-  rulesLink.style.display = 'block';
+  // rulesLink.style.display = 'block';
   resultContainer.innerHTML = ` <div class="sides">
   <div class="left-side">
     <img
@@ -147,4 +155,12 @@ escolhaCards.forEach((cards, index) => {
 
 playAgain.addEventListener('click', () => {
   estadoInicial();
+});
+
+resetScore.addEventListener('click', () => {
+  // placar.classList.add('active');
+  scoreContainer.innerHTML = ` <p class="score_title">SCORE</p>
+  <p class="actual_score active">0 x 0</p>`;
+  placar.textContent = '0 x 0';
+  [pontosJogador, pontosComputador] = [0, 0];
 });
