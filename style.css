@@ -22,7 +22,6 @@ body {
 
 .container {
   max-width: 375px;
-  border: 1px solid lightblue;
   margin: auto;
 }
 
@@ -81,8 +80,7 @@ header {
 
 .options_container {
   max-width: 375px;
-  height: 300px;
-  border: 1px solid lightcoral;
+  height: 400px;
   position: relative;
 }
 
@@ -108,7 +106,7 @@ header {
 /* Classes das opções ---------- */
 .paper_container {
   border-radius: 50%;
-  top: 10%;
+  top: 80px;
   left: 5%;
   border: 15px solid blue;
   background-color: white;
@@ -121,7 +119,7 @@ header {
 .scissor_container {
   border: 15px solid hsl(39, 89%, 49%);
   border-radius: 50%;
-  top: 10%;
+  top: 80px;
   right: 5%;
   background-image: url('./images/icon-scissor.svg');
   background-size: 50px;
@@ -132,7 +130,7 @@ header {
 .rock_container {
   border: 15px solid hsl(349, 71%, 52%);
   border-radius: 50%;
-  bottom: 5%;
+  bottom: 10%;
   right: 34%;
   background-image: url('./images/icon-rock.svg');
   background-size: 50px;
@@ -152,32 +150,23 @@ header {
 }
 
 .bar1 {
-  top: 90px;
+  top: 150px;
   left: 100px;
 }
 .bar2 {
-  top: 90px;
+  top: 150px;
   left: 100px;
   transform-origin: right;
   transform: rotate(-60deg);
 }
 .bar3 {
-  top: 90px;
+  top: 150px;
   left: 100px;
   transform-origin: left;
   transform: rotate(60deg);
 }
 
 /*! Result Container --------------------------------------------------- */
-.result_container {
-  display: none; /* Irá ser trocado de forma dinâmica pelo javascript */
-  align-items: center;
-  justify-content: center;
-  max-width: 375px;
-  height: 300px;
-  border: 1px solid lightgreen;
-  column-gap: 40px;
-}
 
 .player_container,
 .house_container {
@@ -187,28 +176,61 @@ header {
 }
 
 /*! Footer ------------------------------------------------------------ */
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
 .rules_link {
   text-decoration: none;
   color: white;
   border: 1px solid whitesmoke;
   padding: 0.5rem 2rem;
   border-radius: 5px;
-  margin: 4rem;
+  margin-top: 3rem;
+  letter-spacing: 3px;
+  /* margin: 4rem; */
 }
 
 .jogar-novamente {
   display: none;
   text-decoration: none;
-  color: white;
-  border: 1px solid whitesmoke;
-  padding: 0.5rem 2rem;
+  color: rgb(19, 19, 74);
+  padding: 0.8rem 3.5rem;
   border-radius: 5px;
-  margin: 4rem;
+  letter-spacing: 2px;
+  background-color: white;
+  position: absolute;
+  top: -40px;
 }
 
 /* ! Result container ------------------------------------------------------ */
+.result_container {
+  display: none; /* Irá ser trocado de forma dinâmica pelo javascript */
+  align-items: center;
+  justify-content: center;
+  max-width: 375px;
+  row-gap: 50px;
+  flex-direction: column;
+  height: 400px;
+}
+
 .result_container h2 {
   text-align: center;
   margin-top: 1rem;
   color: whitesmoke;
+}
+
+.sides {
+  display: flex;
+  column-gap: 60px;
+}
+
+.result-message {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-size: 2rem;
 }

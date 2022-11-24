@@ -39,7 +39,6 @@ function trocaTela() {
 //Função que esconde o link para as regras e mostra o jogar novamente
 function changeLink() {
   playAgain.style.display = 'block';
-  rulesLink.style.display = 'none';
 }
 
 //Função que irá voltar a tela para um estado inicial, para que seja possível jogar novamente.
@@ -49,13 +48,18 @@ function estadoInicial() {
   resultContainer.style.display = 'none';
   playAgain.style.display = 'none';
   rulesLink.style.display = 'block';
-  resultContainer.innerHTML = `<div class="left-side">
-  <div class="player_container"></div>
-  <h2>Jogador</h2>
+  resultContainer.innerHTML = `  <div class="sides">
+  <div class="left-side">
+    <div class="player_container"></div>
+    <h2>Jogador</h2>
+  </div>
+  <div class="right-side">
+    <div class="house_container"></div>
+    <h2>Robo</h2>
+  </div>
 </div>
-<div class="right-side">
-  <div class="house_container"></div>
-  <h2>Robo</h2>
+<div class="result-message">
+  <h3>RESULT'S MESSAGE</h3>
 </div>`;
 }
 
@@ -66,6 +70,27 @@ function estadoInicial() {
     ? console.log('ai sim')
     : '';
 } */
+
+//Função que recebe a escolha do jogador e do computador, e então encontra o vencedor baseado nessas escolhas
+
+function checarVencedor(escolhaJogador, escolhaCasa) {
+  console.log(escolhaJogador, escolhaCasa);
+  if (escolhaJogador == escolhaCasa) {
+    console.log('Empate!');
+  } else if (escolhaJogador == 'paper' && escolhaCasa == 'rock') {
+    console.log('Você venceu!');
+  } else if (escolhaJogador == 'paper' && escolhaCasa == 'scissor') {
+    console.log('O robo venceu!');
+  } else if (escolhaJogador == 'rock' && escolhaCasa == 'paper') {
+    console.log('O robo venceu!');
+  } else if (escolhaJogador == 'rock' && escolhaCasa == 'scissor') {
+    console.log('você venceu!');
+  } else if (escolhaJogador == 'scissor' && escolhaCasa == 'rock') {
+    console.log('O robo venceu!');
+  } else if (escolhaJogador == 'scissor' && escolhaCasa == 'paper') {
+    console.log('Você venceu!');
+  }
+}
 
 //! Event handlers ----------------------------------------------------------
 
@@ -80,6 +105,7 @@ escolhaCards.forEach((cards, index) => {
     changeLink();
     console.log(typeof escolhaCasa, escolhaCasa);
     console.log(typeof escolhaJogador, escolhaJogador);
+    checarVencedor(escolhaJogador, escolhaCasa);
   });
 });
 
