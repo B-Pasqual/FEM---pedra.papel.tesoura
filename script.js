@@ -1,8 +1,5 @@
 //! Selecionando Elementos necessários --------------------------------------
 
-// const papel = document.querySelector('.paper_container');
-// const pedra = document.querySelector('.rock_container');
-// const tesoura = document.querySelector('.scissor_container');
 const optionsContainer = document.querySelector('.options_container');
 const escolhaCards = document.querySelectorAll('.cards');
 let playerContainer = document.querySelector('.player_container');
@@ -12,20 +9,42 @@ const resultContainer = document.querySelector('.result_container');
 const playAgain = document.querySelector('.jogar-novamente');
 const rulesLink = document.querySelector('.rules_link');
 
-//!Variáveis ----------------------------------------------------------------
+//crowSelection
+// const rightCrow = document.querySelector('.crow-right');
+// const leftCrow = document.querySelector('.crow-left');
+
+//!Variáveis ------------------------------------------------------------------
 
 const possibilidades = ['paper', 'rock', 'scissor'];
 
-//!Funções ------------------------------------------------------------------
+//!Funções --------------------------------------------------------------------
 
-/* function giraDado() {
-  let aleatorio = possibilidades[Math.floor(Math.random() * (3 - 0) + 0)];
-  return aleatorio;
-} */
+//Função para ver quem ganhou a disputa e fazer as alterações de acordo
+
+function crowAdd(vencedor) {
+  console.log(vencedor);
+  const coroaDireita = document.querySelector('.crow-right');
+  const coroaEsquerda = document.querySelector('.crow-left');
+  const message = document.querySelector('.mensagem');
+
+  //Comparando parâmetro para saber quem ganhou e alterando a mensagem de resultado
+
+  if (vencedor == 'jogador') {
+    console.log('jogador');
+    message.textContent = 'VOCÊ GANHOU !';
+  } else if (vencedor == 'robo') {
+    console.log('robo');
+    message.textContent = 'O ROBO GANHOU !';
+  } else if (vencedor == 'empate') {
+    message.textContent = 'EMPATE !';
+    console.log('empate');
+  }
+}
 
 function escolhas(escolhaCasa, escolhaJogador) {
   let playerContainer = document.querySelector('.player_container');
   let houseContainer = document.querySelector('.house_container');
+
   playerContainer.classList.add(`${escolhaJogador}_container`);
   houseContainer.classList.add(`${escolhaCasa}_container`);
 }
@@ -48,18 +67,28 @@ function estadoInicial() {
   resultContainer.style.display = 'none';
   playAgain.style.display = 'none';
   rulesLink.style.display = 'block';
-  resultContainer.innerHTML = `  <div class="sides">
+  resultContainer.innerHTML = ` <div class="sides">
   <div class="left-side">
+    <img
+      class="crow-left"
+      src="./images/crown.png"
+      alt="crow icon"
+    />
     <div class="player_container"></div>
-    <h2>Jogador</h2>
+    <h2>Você</h2>
   </div>
   <div class="right-side">
+    <img
+      class="crow-right"
+      src="./images/crown.png"
+      alt="crow icon"
+    />
     <div class="house_container"></div>
     <h2>Robo</h2>
   </div>
 </div>
 <div class="result-message">
-  <h3>RESULT'S MESSAGE</h3>
+  <h3 class ='mensagem'></h3>
 </div>`;
 }
 
@@ -77,17 +106,23 @@ function checarVencedor(escolhaJogador, escolhaCasa) {
   console.log(escolhaJogador, escolhaCasa);
   if (escolhaJogador == escolhaCasa) {
     console.log('Empate!');
+    crowAdd('empate');
   } else if (escolhaJogador == 'paper' && escolhaCasa == 'rock') {
-    console.log('Você venceu!');
+    crowAdd('jogador');
   } else if (escolhaJogador == 'paper' && escolhaCasa == 'scissor') {
+    crowAdd('robo');
     console.log('O robo venceu!');
   } else if (escolhaJogador == 'rock' && escolhaCasa == 'paper') {
+    crowAdd('robo');
     console.log('O robo venceu!');
   } else if (escolhaJogador == 'rock' && escolhaCasa == 'scissor') {
+    crowAdd('jogador');
     console.log('você venceu!');
   } else if (escolhaJogador == 'scissor' && escolhaCasa == 'rock') {
+    crowAdd('robo');
     console.log('O robo venceu!');
   } else if (escolhaJogador == 'scissor' && escolhaCasa == 'paper') {
+    crowAdd('jogador');
     console.log('Você venceu!');
   }
 }
